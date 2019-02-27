@@ -6,12 +6,12 @@ class Api::ProductsController < ApplicationController
 
   def product_one
     @one = Product.first
-    render "product_list.json.jbuilder"
+    render "product_one.json.jbuilder"
   end
 
   def product_three
     @three = Product.third
-    render "product_list.json.jbuilder"
+    render "product_three.json.jbuilder"
   end
 end
 #   def view_contact
