@@ -6,7 +6,7 @@ class Api::ProductsController < ApplicationController
 
   def show
     @product = Product.find_by(id: params[:id])
-    render "product.json.jbuilder"
+    render "show.json.jbuilder"
   end
 
   def create
@@ -28,7 +28,7 @@ class Api::ProductsController < ApplicationController
     @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
     @product.save
-    render "product.json.jbuilder"
+    render "show.json.jbuilder"
   end
 
   def destroy
