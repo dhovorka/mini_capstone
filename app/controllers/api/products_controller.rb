@@ -14,6 +14,7 @@ class Api::ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       image_url: params[:image_url],
+      in_stock: params[:in_stock],
       description: params[:description]
       )
     if @product.save
@@ -27,6 +28,7 @@ class Api::ProductsController < ApplicationController
   def update
     @product = Product.find_by(id: params[:id])
     @product.name = params[:name] || @product.name
+    @product.in_stock = params[:in_stock] || @product.in_stock
     @product.price = params[:price] || @product.price
     @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
