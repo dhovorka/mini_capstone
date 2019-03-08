@@ -1,6 +1,29 @@
 class Api::ProductsController < ApplicationController
+
+#     Exercise:
+# Inside your mini_capstone, add the following features:
+# - Change the index action to return products sorted by id by default.
+# - Change the index action to allow for searching by name (using params “search”).
+# - Change the index action to allow the user to see products in order of price, lowest to highest (using params “sort” equal to “price”).
+# - Change the index action to allow the user to see products in order of price, highest to lowest (using params “sort” equal to “price” and params “sort_order” equal to “desc”).
+# - Change the index action to allow the user to display all products under $2.00 or some other price of your choosing (using params “discount” equal to “true”).
+
+
   def index
     @products = Product.all
+
+    name_search = params[:name]
+    if name_search
+      @products = @products.where("name ILIKE ?", "%#{name_search}%")
+    else
+    end
+    # @products = @products.order(:id => :asc)
+      # price_sort = params[:price]
+    # if price_sort
+    #   @products = @products.sort(:price => :asc)
+    # else
+    # end
+
     render "index.json.jbuilder"
   end
 

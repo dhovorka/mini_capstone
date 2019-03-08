@@ -8,3 +8,4 @@
   json.discount product.is_discounted?
   json.tax_cost product.tax
   json.total product.total
+  json.supplier_id product.supplier_id
