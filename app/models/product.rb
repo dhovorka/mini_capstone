@@ -9,6 +9,9 @@ validates :description, presence: true
 validates :description, length: { minimum: 3 }
 validates :description, length: { maximum: 400 }
 
+def supplier
+  Supplier.find_by(id: supplier_id)
+end
 
 def is_discounted?
   if price < 10
@@ -25,5 +28,14 @@ end
 def total
   total = (price * 0.09) + price
 end 
+
+def images
+  @products = Image.where(product_id: id)
+end
   
+def products
+  Product.where(supplier_id: id)
+end
+
+
 end

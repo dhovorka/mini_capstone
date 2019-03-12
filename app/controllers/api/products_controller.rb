@@ -36,9 +36,10 @@ class Api::ProductsController < ApplicationController
     @product = Product.new(
       name: params[:name],
       price: params[:price],
-      image_url: params[:image_url],
+      # image_url: params[:image_url],
       in_stock: params[:in_stock],
       description: params[:description]
+      # supplier_id: 1
       )
     if @product.save
       render "show.json.jbuilder"
@@ -53,7 +54,8 @@ class Api::ProductsController < ApplicationController
     @product.name = params[:name] || @product.name
     @product.in_stock = params[:in_stock] || @product.in_stock
     @product.price = params[:price] || @product.price
-    @product.image_url = params[:image_url] || @product.image_url
+    # @product.image_url = params[:image_url] || @product.image_url
+    # @image.url = params[:url] || @image.url
     @product.description = params[:description] || @product.description
     if @product.save
       render "show.json.jbuilder"
