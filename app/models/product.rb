@@ -9,6 +9,14 @@ validates :description, presence: true
 validates :description, length: { minimum: 3 }
 validates :description, length: { maximum: 400 }
 
+belongs_to :supplier_id
+
+has_many :categories, through: :categoryproducts
+
+has_many :images
+has_many :orders
+has_many :categoryproducts
+
 def supplier
   Supplier.find_by(id: supplier_id)
 end

@@ -1,4 +1,5 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
 
 #     Exercise:
 # Inside your mini_capstone, add the following features:
@@ -38,8 +39,8 @@ class Api::ProductsController < ApplicationController
       price: params[:price],
       # image_url: params[:image_url],
       in_stock: params[:in_stock],
-      description: params[:description]
-      # supplier_id: 1
+      description: params[:description],
+      supplier_id: params[:supplier_id]
       )
     if @product.save
       render "show.json.jbuilder"

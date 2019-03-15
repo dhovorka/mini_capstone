@@ -11,4 +11,5 @@
   json.supplier_id product.supplier_id
   json.images product.images
   json.current_user current_user
+  
 
