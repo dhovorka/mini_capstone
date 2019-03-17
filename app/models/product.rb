@@ -9,7 +9,7 @@ validates :description, presence: true
 validates :description, length: { minimum: 3 }
 validates :description, length: { maximum: 400 }
 
-belongs_to :supplier_id
+belongs_to :suppliers
 
 has_many :categories, through: :categoryproducts
 
