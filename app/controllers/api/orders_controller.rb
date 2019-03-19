@@ -12,19 +12,26 @@ class Api::OrdersController < ApplicationController
 
   def create
 
+    carted_product = CartedProduct.find_by(status: "carted")
 
+    calculated_subtotal = carted_product.product.price * carted_product.quantity
+    calculated_tax = calculated_subtotal * 0.09
+    calculated_total = calculated_subtotal + calculated_tax
 
     @order = Order.new(
       subtotal: calculated_subtotal,
       tax: calculated_tax,
       total: calculated_total,
-      user_id: current_user.id,
+      user_id: current_user.id
     )
+
+    if @order.save
+      render json: {message: "correcto, you created/placed an order"}
+     else
+       render json: {message: "nice try, no order created"}
+
     # @order = CartedProduct.find_by(status: "carted")
     
-
-
-    # if @order.save
     #   render json: {message: "correcto, you created/placed an order"}
     # else
     #   render json: {message: "nice try, no order created"}
@@ -45,4 +52,5 @@ class Api::OrdersController < ApplicationController
     #   render json: {message: "nice try, no order created"}
   end
   end
+  
 end
