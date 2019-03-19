@@ -13,8 +13,13 @@ class Api::OrdersController < ApplicationController
   def create
 
     carted_product = CartedProduct.find_by(status: "carted")
+    #carted_product = current_user.cartedproduct.where(status: "carted")
+    #the above is throwing an error
+
 
     calculated_subtotal = carted_product.product.price * carted_product.quantity
+    #create loop to account for multiple carted_product
+
     calculated_tax = calculated_subtotal * 0.09
     calculated_total = calculated_subtotal + calculated_tax
 
