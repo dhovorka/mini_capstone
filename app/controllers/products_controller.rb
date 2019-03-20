@@ -18,10 +18,10 @@ class ProductsController < ApplicationController
       name: params[:name],
       price: params[:price],
       description: params[:description],
-      in_stock: params[:in_stock],
       supplier_id: 1
       )
     @product.save
-    render "show.html.erb"
+    #render "show.html.erb"
+    redirect_to "/products/#{@product.id}"
   end
 end
