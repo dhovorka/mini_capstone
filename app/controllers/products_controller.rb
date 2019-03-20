@@ -12,4 +12,16 @@ class ProductsController < ApplicationController
   def new
     render "new.html.erb"
   end
+
+  def create
+    @product = Product.new(
+      name: params[:name],
+      price: params[:price],
+      description: params[:description],
+      in_stock: params[:in_stock],
+      supplier_id: 1
+      )
+    @product.save
+    render "show.html.erb"
+  end
 end
