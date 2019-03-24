@@ -1,0 +1,9 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-family: 'Germania One', cursive;
+  background-image: url('gradient_squares.png');
+}
+
+.title {
+  font-family: 'Anton', sans-serif;
+}
